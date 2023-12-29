@@ -1,0 +1,83 @@
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  font-family:  'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  display: flex;
+  flex-direction: column;
+
+}
+h5 {
+  padding: 8px;
+  background: #edf1ff;
+  border-radius: 4px 4px 0 0;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+.container::-webkit-scrollbar {
+  width: 8px;     /* Tamaño del scroll en vertical */
+  height: 8px;    /* Tamaño del scroll en horizontal */
+  display: none;  /* Ocultar scroll */
+}
+
+.btnBack, .btnNext{
+  background-color: transparent;
+  border: none;
+}
+.inputPage:focus{
+  outline: 0;
+}
+
+
+/* Tamaño del scroll */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+ /* Estilos barra (thumb) de scroll */
+::-webkit-scrollbar-thumb {
+  /* background:  linear-gradient(90deg, #f8cd2d, #00BFFF, #6c0979); */
+  background: #3C3D3C;
+
+  border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb:active {
+  background: #3C3D3C;
+
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #868887;
+
+  box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.2);
+}
+
+ /* Estilos track de scroll */
+::-webkit-scrollbar-track {
+  background: #1111118e;
+  border-radius: 2px;
+}
+
+::-webkit-scrollbar-track:hover, 
+::-webkit-scrollbar-track:active {
+  background: #000000e8;
+
+}
+
+.error{
+  color:#ff014f;
+}
+
+.searchbar{
+  border: 1px solid red;
+}

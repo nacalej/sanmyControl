@@ -1,0 +1,15 @@
+
+/*
+shadow-sm  bg-body rounded en pagination*/
+
+.page-item .page-link {   
+    border: none;
+    border-radius: 5px;
+    color: black;
+}
+
+ .pagination .active a {
+    background-color: #354259;
+    color: white;
+}
+
