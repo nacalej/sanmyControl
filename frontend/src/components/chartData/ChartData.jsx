@@ -13,11 +13,12 @@ ChartJS.register(
 );
 
 export default function ChartData() {
+  const URL = process.env.REACT_APP_BACKEND_URL || 'http://localhost:3001';
 
     const [rentals, setRentals] = useState([]);
    
     const reqApi = async() => {
-      await axios.get("http://localhost:5000/chartData")
+      await axios.get(`${URL}/chartData`)
       .then(response => {
         let res = response.data;        
           setRentals(res);

@@ -1,11 +1,11 @@
 const mysql  = require("promise-mysql");
-// const config = require("../utils/config/index.js");
+const config = require("../utils/config/index.js");
 
 const connection = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
+    host: config.dbHost || 'localhost',
+    user: config.dbUser || 'root',
     password: '',
-    database: 'sanmycontrol'
+    database: config.dbDatabase || 'sanmycontrol'
 });
 
 

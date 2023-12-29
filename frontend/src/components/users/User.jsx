@@ -39,12 +39,13 @@ const User = ({ item }) => {
       window.location.reload();
     });
   };
+  const URL = process.env.REACT_APP_BACKEND_URL || 'http://localhost:3001';
 
   const handleDelete = () => {
-    const url = `http://localhost:5000/users/${item.id}`;
+    const urlDelete = `${URL}/users/${item.id}`;
     console.log("ID: ", item.id);
     axios
-      .delete(url)
+      .delete(urlDelete)
       .then((response) => {
         const result = response.data;
         const { status, message } = result;

@@ -31,15 +31,16 @@ const EditUser = ({ theUser }) => {
   );
 
 
+  const URL = process.env.REACT_APP_BACKEND_URL || 'http://localhost:3001';
 
   const handleSubmit = (id) => {
     id = idProduct;
-    console.log(id);
-    const url = `http://localhost:5000/users/${id}`;
+    console.log(id);  
+    const urlPut = `${URL}/users/${id}`;
     const connectionToUpdate = { name, lastName, macAddress };
 
     axios
-      .put(url, connectionToUpdate)
+      .put(urlPut, connectionToUpdate)
       .then((response) => {
         console.log("Response: ", response);
         const result = response.data;

@@ -26,16 +26,17 @@ const EditConnection = ({theConnection}) =>{
     const idProduct = theConnection.id;
 
     const [enDateRentalWifi, SetEnDateRentalWifi] = useState(theConnection.enDateRentalWifi);
+    const URL = process.env.REACT_APP_BACKEND_URL || 'http://localhost:3001';
 
     
     const handleSubmit = (id) => {
         id = idProduct;
         console.log(id);
-        const url = `http://localhost:5000/rentalWifi/${id}`;
+        const urlPut = `${URL}/rentalWifi/${id}`;
         const connectionToUpdate = {enDateRentalWifi}
       
         axios
-          .put(url, connectionToUpdate )
+          .put(urlPut, connectionToUpdate )
           .then((response) => {
             console.log("Response: ", response);
             const result = response.data;

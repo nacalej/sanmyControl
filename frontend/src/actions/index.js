@@ -3,28 +3,19 @@ import Swal from "sweetalert2";
 
 
 import {
-  GET_MACHINES,
-  GET_MACHINE_BY_ID,
+
   GET_EARNINGS,
-  GET_RENTALS,
-  GET_RENTAL_BY_ID,
-  UPDATE_RENTAL,
+
   GET_EARNINGS_BY_MONTH,
-  GET_STATUS_EARNINGS,
-  GET_MOVEMENTS,
-  GET_MOVEMENT_BY_ID,
+
   GET_COUNT_RENTALS,
-  GET_REVENUE_LAST_MONTH,
-  MOST_RENTED_MACHINE,
-  GET_VALUE_DOLLAR,
+
   GET_EARNINGS_PER_DAY,
   GET_RENTAL_WIFI,
   GET_RENTALWIFI_BY_ID,
   GET_EARNINGS_WIFI_PER_DAY,
-  GET_EARNINGS_PER_SELECTED_MONTH,
   GET_EARNINGS_PER_CASH_PAYMENTS,
   GET_EARNINGS_PER_MOBILE_PAYMENTS,
-  GET_ALL_INCOME_MOVEMENTS,
   /*USERS*/
   GET_USERS,
   UPDATE_USER,
@@ -32,12 +23,13 @@ import {
   /* END USERS*/
 } from "./const";
 
+const URL = process.env.REACT_APP_BACKEND_URL || 'http://localhost:3001';
 //Actions:
 
 export const getEarnings = () => {
   return async function (dispatch) {
     await axios
-      .get("http://localhost:5000/earnings")
+      .get(`${URL}/earnings`)
       .then((response) => {
         dispatch({
           type: GET_EARNINGS,
@@ -53,7 +45,7 @@ export const getEarnings = () => {
 export const getEarningsPerDay = () => {
   return async function (dispatch) {
     await axios
-      .get("http://localhost:5000/earnings/perDay")
+      .get(`${URL}/earnings/perDay`)
       .then((response) => {
         dispatch({
           type: GET_EARNINGS_PER_DAY,
@@ -69,7 +61,7 @@ export const getEarningsPerDay = () => {
 export const getEarningsWifiPerDay = () => {
   return async function (dispatch) {
     await axios
-      .get("http://localhost:5000/earnings/wifiPerDay")
+      .get(`${URL}/earnings/wifiPerDay`)
       .then((response) => {
         dispatch({
           type: GET_EARNINGS_WIFI_PER_DAY,
@@ -82,22 +74,6 @@ export const getEarningsWifiPerDay = () => {
   };
 };
 
-export const getEarningsPerSelectedMonth = () => {
-  console.log("Payload in action getEarningsPerSelectedMonth: ");
-  return async (dispatch) => {
-    await axios
-      .get("http://localhost:5000/earningsPerMonth/")
-      .then((response) => {
-        dispatch({
-          type: GET_EARNINGS_PER_SELECTED_MONTH,
-          payload: response.data,
-        });
-      })
-      .catch((err) => {
-        console.log("Detailrental by id, actions ", err);
-      });
-  };
-};
 
 export const getTotalCashPayments = () => {
   console.log("Payload in action getEarningsPerSelectedMonth: ");
@@ -133,59 +109,10 @@ export const getTotalMobilePayments = () => {
   };
 };
 
-export const getAllIncomeMovements = () => {
-  console.log("Payload in action getEarningsPerSelectedMonth: ");
-  return async (dispatch) => {
-    await axios
-      .get("http://localhost:5000/movements/income")
-      .then((response) => {
-        dispatch({
-          type: GET_ALL_INCOME_MOVEMENTS,
-          payload: response.data,
-        });
-      })
-      .catch((err) => {
-        console.log("Detailrental by id, actions ", err);
-      });
-  };
-};
-export const getRevenueLastMonth = () => {
-  return async function (dispatch) {
-    await axios
-      .get("http://localhost:5000/earnings/lastMonth")
-      .then((response) => {
-        dispatch({
-          type: GET_REVENUE_LAST_MONTH,
-          payload: response.data,
-        });
-        console.log("REVENUE: ", dispatch)
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
-};
-
-export const getStatusEarnings = () => {
-  return async function (dispatch) {
-    await axios
-      .get("http://localhost:5000/status")
-      .then((response) => {
-        dispatch({
-          type: GET_STATUS_EARNINGS,
-          payload: response.data,
-        });
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
-};
-
 export const getEarningsByMonth = () => {
   return async function (dispatch) {
     await axios
-      .get("http://localhost:5000/earnings/month")
+      .get(`${URL}/earnings/month`)
       .then((response) => {
         dispatch({
           type: GET_EARNINGS_BY_MONTH,
@@ -202,7 +129,7 @@ export const getEarningsByMonth = () => {
 export const getCountRentals = () => {
   return async function (dispatch) {
     await axios
-      .get("http://localhost:5000/chartData")
+      .get(`${URL}/chartData`)
       .then((response) => {
         dispatch({
           type: GET_COUNT_RENTALS,
@@ -222,7 +149,7 @@ export const getCountRentals = () => {
 export const getAllRentalsWifi = () => {
   return async function (dispatch) {
     await axios
-      .get("http://localhost:5000/rentalWifi")
+      .get(`${URL}/rentalWifi`)
       .then((response) => {
         dispatch({
           type: GET_RENTAL_WIFI,
@@ -238,7 +165,7 @@ export const getAllRentalsWifi = () => {
 export const getRentalWifiById = (id) => {
   return async (dispatch) => {
     await axios
-      .get("http://localhost:5000/rentalWifi/" + id)
+      .get(`${URL}}/rentalWifi/` + id)
       .then((response) => {
         dispatch({
           type: GET_RENTALWIFI_BY_ID,
@@ -255,7 +182,7 @@ export const getRentalWifiById = (id) => {
 export function postRentalWifi(payload) {
   return async () => {
     try {
-      let response = await axios.post("http://localhost:5000/rentalWifi", payload);
+      let response = await axios.post(`${URL}/rentalWifi`, payload);
       console.log("Response de POST: ", payload);
       // alert("Pokemon created! :)");
       return response;
@@ -273,7 +200,7 @@ export function postRentalWifi(payload) {
 export const getAllUsers = () => {
   return async function (dispatch) {
     await axios
-      .get("http://localhost:5000/users")
+      .get(`${URL}/users`)
       .then((response) => {
         dispatch({
           type: GET_USERS,
@@ -290,7 +217,7 @@ export const getUserByName = (payload) => {
   console.log("PAYLOAD NAMEEEEEE: ", payload);
   return async function (dispatch){
       try{
-          let aux = await axios.get("http://localhost:5000/users?name="+payload)
+          let aux = await axios.get(`${URL}/users?name=`+payload)
           return dispatch({
               type: GET_USER_BY_NAME,
               payload: aux.data
@@ -305,9 +232,10 @@ export const getUserByName = (payload) => {
   }
 }
 export function addUser(payload) {
+  console.log("PAYLOAD ADDUSEERRRRRRR-----", payload)
   return async () => {
     try {
-      let response = await axios.post("http://localhost:5000/users", payload);
+      let response = await axios.post(`${URL}/users`, payload);
       console.log("Response de POST: ", payload);
       // alert("Pokemon created! :)");
       return response;
@@ -323,7 +251,7 @@ export function updateProduct(payload) {
   let id = payload.id;
   return async function (dispatch) {
     let request = await axios.put(
-      "http://localhost:3001/users/"+id,
+      `${URL}/users/`+id,
       payload
     );
     return dispatch({

@@ -6,6 +6,7 @@ const errorHandler = require("./src/utils/middlewares/errorHandler");
 const setHeaders   = require("./src/utils/middlewares/setHeaders");
 
 const cors = require("cors");
+const config = require("./src/config/config.js");
 
 const app = express();
 
@@ -32,8 +33,8 @@ app.use(errorHandler);
 
 //Server.listen
 
-app.listen(5000, async () => {
-    console.log("Server on port 5000");
+app.listen(config.dbPort, async () => {
+    console.log(`Server on port ${config.dbPort}`);
 });
 
 
