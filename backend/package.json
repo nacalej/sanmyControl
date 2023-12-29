@@ -4,7 +4,7 @@
   "description": "Backend for SanmyControl",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon index.js"
+    "start": "nodemon index.js"
   },
   "author": "Nacarith Sequera",
   "license": "ISC",
