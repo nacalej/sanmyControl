@@ -27,9 +27,7 @@ const Home = () => {
   },[dispatch]);  
 
   const { earningsByMonth, 
-    earningsWifiPerDay,
-    earningsPerDay, 
-   } = useSelector((state) => state);
+    earningsWifiPerDay   } = useSelector((state) => state);
  console.log("Earnings by month: ", earningsByMonth);
  
  let cleanedValueEarningsByMonth = Number(earningsByMonth).toFixed(2);

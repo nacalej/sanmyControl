@@ -22,6 +22,7 @@ import {
   GET_USER_BY_NAME
   /* END USERS*/
 } from "./const";
+import { URL_ADD_RENTAL_WIFI, URL_ADD_USER, URL_GET_ALL_RENTALS_WIFI, URL_GET_ALL_USERS, URL_GET_COUNT_RENTALS, URL_GET_EARNINGS, URL_GET_EARNINGS_BY_MONTH, URL_GET_EARNINGS_WIFI_PER_DAY } from "../const/constants";
 
 const URL = process.env.REACT_APP_BACKEND_URL || 'http://localhost:3001';
 //Actions:
@@ -29,7 +30,7 @@ const URL = process.env.REACT_APP_BACKEND_URL || 'http://localhost:3001';
 export const getEarnings = () => {
   return async function (dispatch) {
     await axios
-      .get(`${URL}/earnings`)
+      .get(URL_GET_EARNINGS)
       .then((response) => {
         dispatch({
           type: GET_EARNINGS,
@@ -42,26 +43,12 @@ export const getEarnings = () => {
   };
 };
 
-export const getEarningsPerDay = () => {
-  return async function (dispatch) {
-    await axios
-      .get(`${URL}/earnings/perDay`)
-      .then((response) => {
-        dispatch({
-          type: GET_EARNINGS_PER_DAY,
-          payload: response.data,
-        });
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
-};
+
 
 export const getEarningsWifiPerDay = () => {
   return async function (dispatch) {
     await axios
-      .get(`${URL}/earnings/wifiPerDay`)
+      .get(URL_GET_EARNINGS_WIFI_PER_DAY)
       .then((response) => {
         dispatch({
           type: GET_EARNINGS_WIFI_PER_DAY,
@@ -75,44 +62,13 @@ export const getEarningsWifiPerDay = () => {
 };
 
 
-export const getTotalCashPayments = () => {
-  console.log("Payload in action getEarningsPerSelectedMonth: ");
-  return async (dispatch) => {
-    await axios
-      .get("http://localhost:5000/earningsPerMonth/cashPayments")
-      .then((response) => {
-        dispatch({
-          type: GET_EARNINGS_PER_CASH_PAYMENTS,
-          payload: response.data,
-        });
-      })
-      .catch((err) => {
-        console.log("Detailrental by id, actions ", err);
-      });
-  };
-};
 
-export const getTotalMobilePayments = () => {
-  console.log("Payload in action getEarningsPerSelectedMonth: ");
-  return async (dispatch) => {
-    await axios
-      .get("http://localhost:5000/earningsPerMonth/mobilePayments")
-      .then((response) => {
-        dispatch({
-          type: GET_EARNINGS_PER_MOBILE_PAYMENTS,
-          payload: response.data,
-        });
-      })
-      .catch((err) => {
-        console.log("Detailrental by id, actions ", err);
-      });
-  };
-};
+
 
 export const getEarningsByMonth = () => {
   return async function (dispatch) {
     await axios
-      .get(`${URL}/earnings/month`)
+      .get(URL_GET_EARNINGS_BY_MONTH)
       .then((response) => {
         dispatch({
           type: GET_EARNINGS_BY_MONTH,
@@ -129,7 +85,7 @@ export const getEarningsByMonth = () => {
 export const getCountRentals = () => {
   return async function (dispatch) {
     await axios
-      .get(`${URL}/chartData`)
+      .get(URL_GET_COUNT_RENTALS)
       .then((response) => {
         dispatch({
           type: GET_COUNT_RENTALS,
@@ -149,7 +105,7 @@ export const getCountRentals = () => {
 export const getAllRentalsWifi = () => {
   return async function (dispatch) {
     await axios
-      .get(`${URL}/rentalWifi`)
+      .get(URL_GET_ALL_RENTALS_WIFI)
       .then((response) => {
         dispatch({
           type: GET_RENTAL_WIFI,
@@ -182,7 +138,7 @@ export const getRentalWifiById = (id) => {
 export function postRentalWifi(payload) {
   return async () => {
     try {
-      let response = await axios.post(`${URL}/rentalWifi`, payload);
+      let response = await axios.post(URL_ADD_RENTAL_WIFI, payload);
       console.log("Response de POST: ", payload);
       // alert("Pokemon created! :)");
       return response;
@@ -200,7 +156,7 @@ export function postRentalWifi(payload) {
 export const getAllUsers = () => {
   return async function (dispatch) {
     await axios
-      .get(`${URL}/users`)
+      .get(URL_GET_ALL_USERS)
       .then((response) => {
         dispatch({
           type: GET_USERS,
@@ -235,7 +191,7 @@ export function addUser(payload) {
   console.log("PAYLOAD ADDUSEERRRRRRR-----", payload)
   return async () => {
     try {
-      let response = await axios.post(`${URL}/users`, payload);
+      let response = await axios.post(URL_ADD_USER, payload);
       console.log("Response de POST: ", payload);
       // alert("Pokemon created! :)");
       return response;

@@ -4,6 +4,7 @@ import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
 import { addProduct } from '../../actions';
 import Swal from "sweetalert2";
+import { URL_UPDATE_RENTAL_WIFI_BY_ID } from '../../const/constants';
 
 // import {EmployeeContext} from '../contexts/EmployeeContext';
 // import {useContext, useState} from 'react';
@@ -32,7 +33,7 @@ const EditConnection = ({theConnection}) =>{
     const handleSubmit = (id) => {
         id = idProduct;
         console.log(id);
-        const urlPut = `${URL}/rentalWifi/${id}`;
+        const urlPut = `${URL_UPDATE_RENTAL_WIFI_BY_ID}/${id}`;
         const connectionToUpdate = {enDateRentalWifi}
       
         axios

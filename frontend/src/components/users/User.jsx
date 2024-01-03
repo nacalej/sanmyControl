@@ -5,6 +5,7 @@ import EditUser from "./EditUser";
 // import EditForm from './EditForm'
 import axios from "axios";
 import Swal from "sweetalert2";
+import { URL_DELETE_USER } from "../../const/constants";
 
 const User = ({ item }) => {
   const renderTooltip = (props) => (
@@ -42,7 +43,7 @@ const User = ({ item }) => {
   const URL = process.env.REACT_APP_BACKEND_URL || 'http://localhost:3001';
 
   const handleDelete = () => {
-    const urlDelete = `${URL}/users/${item.id}`;
+    const urlDelete = `${URL_DELETE_USER}/${item.id}`;
     console.log("ID: ", item.id);
     axios
       .delete(urlDelete)

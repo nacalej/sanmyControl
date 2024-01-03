@@ -3,6 +3,7 @@ import { Form, Button, Row } from "react-bootstrap";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import Swal from "sweetalert2";
+import { URL_UPDATE_USER } from "../../const/constants";
 
 
 const EditUser = ({ theUser }) => {
@@ -36,7 +37,7 @@ const EditUser = ({ theUser }) => {
   const handleSubmit = (id) => {
     id = idProduct;
     console.log(id);  
-    const urlPut = `${URL}/users/${id}`;
+    const urlPut = `${URL_UPDATE_USER}/${id}`;
     const connectionToUpdate = { name, lastName, macAddress };
 
     axios

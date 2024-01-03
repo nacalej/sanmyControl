@@ -5,6 +5,7 @@ import EditConnection from './EditConnection';
 // import EditForm from './EditForm'
 import axios from "axios";
 import Swal from "sweetalert2";
+import { URL_DELETE_RENTAL_WIFI_BY_ID } from '../../const/constants';
 
 
 
@@ -47,7 +48,7 @@ const WifiRental = ({item}) => {
 
 
     const handleDelete = () => {
-        const urlDelete = `${URL}/${item.id}`;
+        const urlDelete = `${URL_DELETE_RENTAL_WIFI_BY_ID}/${item.id}`;
         console.log("ID: ", item.id);
         axios
           .delete(urlDelete)
