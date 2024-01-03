@@ -2,10 +2,10 @@ const mysql  = require("promise-mysql");
 const config = require("../utils/config/index.js");
 
 const connection = mysql.createConnection({
-    host: config.dbHost || 'localhost',
-    user: config.dbUser || 'root',
-    password: '',
-    database: config.dbDatabase || 'sanmycontrol'
+    host: config.dbHost ,
+    user: config.dbUser,
+    password: config.dbPassword,
+    database: config.dbDatabase 
 });
 
 
